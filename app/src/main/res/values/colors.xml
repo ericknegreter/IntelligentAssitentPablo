@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#020101</color>
+    <color name="colorPrimaryDark">#000000</color>
+    <color name="colorAccent">#000000</color>
+    <color name="gray_oval_Black">#FFFFFF</color>
+    <color name="purple">#FFFFFF</color>
+    <color name="morado">#06070E</color>
+    <color name="reds">#FF0000</color>
+    <color name="background_color">#0C0C0C</color>
+
+</resources>

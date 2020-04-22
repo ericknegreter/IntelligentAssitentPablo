@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">BLACKSTAR v2</string>
+    <string name="BS_MENU">BLACKSTAR</string>
+    <string name="Luci_MENU">Luci_Menu</string>
+    <string name="LUCi_MENU">LUCi</string>
+    <string name="Rosalind_MENU">Rosalind</string>
+    <string name="Horus_MENU">HORUS</string>
+    <string name="how_To">Selecciona un dispositivo de la lista, para conocer informacion acerca a través de realidad aumentada.</string>
+    <string name="how_To2">Apunta con la camara a una superficie horizontal hasta que aparezca el boton de +  y añade el elemento en realidad aumentada.</string>
+    <string name="how_To3">Selecciona lo que quieras conocer del laboratorio minímo viable a través de realidad aumentada.</string>
+    <string name="how_To4">Selecciona para que conozcas nuestros dispositivos o experimentes con cada uno de ellos.</string>
+    <string name="title_activity_menu_experimeta">menu_experimeta</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Laboratorio Mínimo Viable</string>
+    <string name="nav_header_subtitle">Dispositivos</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+</resources>

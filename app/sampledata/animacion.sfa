@@ -1,0 +1,609 @@
+{
+  animations: [
+    {
+      clips: [
+        {
+          name: 'Point|CameraAction',
+        },
+        {
+          name: 'Point|Circle_001Action',
+        },
+        {
+          name: 'Point|CircleAction',
+        },
+        {
+          name: 'Point|PointAction',
+        },
+        {
+          name: 'Point|Text_001Action',
+        },
+        {
+          name: 'Point|Text_002Action',
+        },
+        {
+          name: 'Point|Text_003Action',
+        },
+        {
+          name: 'Point|Text_004Action',
+        },
+        {
+          name: 'Point|TextAction',
+        },
+        {
+          name: 'Text_004|CameraAction',
+        },
+        {
+          name: 'Text_004|Circle_001Action',
+        },
+        {
+          name: 'Text_004|CircleAction',
+        },
+        {
+          name: 'Text_004|PointAction',
+        },
+        {
+          name: 'Text_004|Text_001Action',
+        },
+        {
+          name: 'Text_004|Text_002Action',
+        },
+        {
+          name: 'Text_004|Text_003Action',
+        },
+        {
+          name: 'Text_004|Text_004Action',
+        },
+        {
+          name: 'Text_004|TextAction',
+        },
+        {
+          name: 'Text_003|CameraAction',
+        },
+        {
+          name: 'Text_003|Circle_001Action',
+        },
+        {
+          name: 'Text_003|CircleAction',
+        },
+        {
+          name: 'Text_003|PointAction',
+        },
+        {
+          name: 'Text_003|Text_001Action',
+        },
+        {
+          name: 'Text_003|Text_002Action',
+        },
+        {
+          name: 'Text_003|Text_003Action',
+        },
+        {
+          name: 'Text_003|Text_004Action',
+        },
+        {
+          name: 'Text_003|TextAction',
+        },
+        {
+          name: 'Text_002|CameraAction',
+        },
+        {
+          name: 'Text_002|Circle_001Action',
+        },
+        {
+          name: 'Text_002|CircleAction',
+        },
+        {
+          name: 'Text_002|PointAction',
+        },
+        {
+          name: 'Text_002|Text_001Action',
+        },
+        {
+          name: 'Text_002|Text_002Action',
+        },
+        {
+          name: 'Text_002|Text_003Action',
+        },
+        {
+          name: 'Text_002|Text_004Action',
+        },
+        {
+          name: 'Text_002|TextAction',
+        },
+        {
+          name: 'Text_001|CameraAction',
+        },
+        {
+          name: 'Text_001|Circle_001Action',
+        },
+        {
+          name: 'Text_001|CircleAction',
+        },
+        {
+          name: 'Text_001|PointAction',
+        },
+        {
+          name: 'Text_001|Text_001Action',
+        },
+        {
+          name: 'Text_001|Text_002Action',
+        },
+        {
+          name: 'Text_001|Text_003Action',
+        },
+        {
+          name: 'Text_001|Text_004Action',
+        },
+        {
+          name: 'Text_001|TextAction',
+        },
+        {
+          name: 'Text|CameraAction',
+        },
+        {
+          name: 'Text|Circle_001Action',
+        },
+        {
+          name: 'Text|CircleAction',
+        },
+        {
+          name: 'Text|PointAction',
+        },
+        {
+          name: 'Text|Text_001Action',
+        },
+        {
+          name: 'Text|Text_002Action',
+        },
+        {
+          name: 'Text|Text_003Action',
+        },
+        {
+          name: 'Text|Text_004Action',
+        },
+        {
+          name: 'Text|TextAction',
+        },
+        {
+          name: 'Circle_001|CameraAction',
+        },
+        {
+          name: 'Circle_001|Circle_001Action',
+        },
+        {
+          name: 'Circle_001|CircleAction',
+        },
+        {
+          name: 'Circle_001|PointAction',
+        },
+        {
+          name: 'Circle_001|Text_001Action',
+        },
+        {
+          name: 'Circle_001|Text_002Action',
+        },
+        {
+          name: 'Circle_001|Text_003Action',
+        },
+        {
+          name: 'Circle_001|Text_004Action',
+        },
+        {
+          name: 'Circle_001|TextAction',
+        },
+        {
+          name: 'Circle|CameraAction',
+        },
+        {
+          name: 'Circle|Circle_001Action',
+        },
+        {
+          name: 'Circle|CircleAction',
+        },
+        {
+          name: 'Circle|PointAction',
+        },
+        {
+          name: 'Circle|Text_001Action',
+        },
+        {
+          name: 'Circle|Text_002Action',
+        },
+        {
+          name: 'Circle|Text_003Action',
+        },
+        {
+          name: 'Circle|Text_004Action',
+        },
+        {
+          name: 'Circle|TextAction',
+        },
+        {
+          name: 'Camera|CameraAction',
+        },
+        {
+          name: 'Camera|Circle_001Action',
+        },
+        {
+          name: 'Camera|CircleAction',
+        },
+        {
+          name: 'Camera|PointAction',
+        },
+        {
+          name: 'Camera|Text_001Action',
+        },
+        {
+          name: 'Camera|Text_002Action',
+        },
+        {
+          name: 'Camera|Text_003Action',
+        },
+        {
+          name: 'Camera|Text_004Action',
+        },
+        {
+          name: 'Camera|TextAction',
+        },
+      ],
+      path: 'sampledata/animacion.fbx',
+    },
+  ],
+  materials: [
+    {
+      name: 'Number',
+      parameters: [
+        {
+          baseColor: [
+            0.084132999999999999,
+            0.15604699999999999,
+            0.80000000000000004,
+            1,
+          ],
+        },
+        {
+          baseColorMap: null,
+        },
+        {
+          normalMap: null,
+        },
+        {
+          interpolatedColor: null,
+        },
+        {
+          metallic: 0,
+        },
+        {
+          metallicMap: null,
+        },
+        {
+          roughness: 1,
+        },
+        {
+          roughnessMap: null,
+        },
+        {
+          opacity: null,
+        },
+      ],
+      source: 'build/sceneform_sdk/default_materials/fbx_material.sfm',
+    },
+    {
+      name: 'Sec',
+      parameters: [
+        {
+          baseColor: [
+            0.041982999999999999,
+            0.075450000000000003,
+            0.36646099999999998,
+            1,
+          ],
+        },
+        {
+          baseColorMap: null,
+        },
+        {
+          normalMap: null,
+        },
+        {
+          interpolatedColor: null,
+        },
+        {
+          metallic: 0,
+        },
+        {
+          metallicMap: null,
+        },
+        {
+          roughness: 1,
+        },
+        {
+          roughnessMap: null,
+        },
+        {
+          opacity: null,
+        },
+      ],
+      source: 'build/sceneform_sdk/default_materials/fbx_material.sfm',
+    },
+    {
+      name: 'Material_002',
+      parameters: [
+        {
+          baseColor: [
+            0.041982999999999999,
+            0.075450000000000003,
+            0.36646099999999998,
+            1,
+          ],
+        },
+        {
+          baseColorMap: null,
+        },
+        {
+          normalMap: null,
+        },
+        {
+          interpolatedColor: null,
+        },
+        {
+          metallic: 0,
+        },
+        {
+          metallicMap: null,
+        },
+        {
+          roughness: 1,
+        },
+        {
+          roughnessMap: null,
+        },
+        {
+          opacity: null,
+        },
+      ],
+      source: 'build/sceneform_sdk/default_materials/fbx_material.sfm',
+    },
+    {
+      name: 'Material_003',
+      parameters: [
+        {
+          baseColor: [
+            0.041982999999999999,
+            0.075450000000000003,
+            0.36646099999999998,
+            1,
+          ],
+        },
+        {
+          baseColorMap: null,
+        },
+        {
+          normalMap: null,
+        },
+        {
+          interpolatedColor: null,
+        },
+        {
+          metallic: 0,
+        },
+        {
+          metallicMap: null,
+        },
+        {
+          roughness: 1,
+        },
+        {
+          roughnessMap: null,
+        },
+        {
+          opacity: null,
+        },
+      ],
+      source: 'build/sceneform_sdk/default_materials/fbx_material.sfm',
+    },
+    {
+      name: 'Material_004',
+      parameters: [
+        {
+          baseColor: [
+            0.041982999999999999,
+            0.075450000000000003,
+            0.36646099999999998,
+            1,
+          ],
+        },
+        {
+          baseColorMap: null,
+        },
+        {
+          normalMap: null,
+        },
+        {
+          interpolatedColor: null,
+        },
+        {
+          metallic: 0,
+        },
+        {
+          metallicMap: null,
+        },
+        {
+          roughness: 1,
+        },
+        {
+          roughnessMap: null,
+        },
+        {
+          opacity: null,
+        },
+      ],
+      source: 'build/sceneform_sdk/default_materials/fbx_material.sfm',
+    },
+    {
+      name: 'Material_005',
+      parameters: [
+        {
+          baseColor: [
+            0.041982999999999999,
+            0.075450000000000003,
+            0.36646099999999998,
+            1,
+          ],
+        },
+        {
+          baseColorMap: null,
+        },
+        {
+          normalMap: null,
+        },
+        {
+          interpolatedColor: null,
+        },
+        {
+          metallic: 0,
+        },
+        {
+          metallicMap: null,
+        },
+        {
+          roughness: 1,
+        },
+        {
+          roughnessMap: null,
+        },
+        {
+          opacity: null,
+        },
+      ],
+      source: 'build/sceneform_sdk/default_materials/fbx_material.sfm',
+    },
+    {
+      name: 'Material_006',
+      parameters: [
+        {
+          baseColor: [
+            0.041982999999999999,
+            0.075450000000000003,
+            0.36646099999999998,
+            1,
+          ],
+        },
+        {
+          baseColorMap: null,
+        },
+        {
+          normalMap: null,
+        },
+        {
+          interpolatedColor: null,
+        },
+        {
+          metallic: 0,
+        },
+        {
+          metallicMap: null,
+        },
+        {
+          roughness: 1,
+        },
+        {
+          roughnessMap: null,
+        },
+        {
+          opacity: null,
+        },
+      ],
+      source: 'build/sceneform_sdk/default_materials/fbx_material.sfm',
+    },
+    {
+      name: 'Material_007',
+      parameters: [
+        {
+          baseColor: [
+            0.041982999999999999,
+            0.075450000000000003,
+            0.36646099999999998,
+            1,
+          ],
+        },
+        {
+          baseColorMap: null,
+        },
+        {
+          normalMap: null,
+        },
+        {
+          interpolatedColor: null,
+        },
+        {
+          metallic: 0,
+        },
+        {
+          metallicMap: null,
+        },
+        {
+          roughness: 1,
+        },
+        {
+          roughnessMap: null,
+        },
+        {
+          opacity: null,
+        },
+      ],
+      source: 'build/sceneform_sdk/default_materials/fbx_material.sfm',
+    },
+    {
+      name: 'Material_008',
+      parameters: [
+        {
+          baseColor: [
+            0.041982999999999999,
+            0.075450000000000003,
+            0.36646099999999998,
+            1,
+          ],
+        },
+        {
+          baseColorMap: null,
+        },
+        {
+          normalMap: null,
+        },
+        {
+          interpolatedColor: null,
+        },
+        {
+          metallic: 0,
+        },
+        {
+          metallicMap: null,
+        },
+        {
+          roughness: 1,
+        },
+        {
+          roughnessMap: null,
+        },
+        {
+          opacity: null,
+        },
+      ],
+      source: 'build/sceneform_sdk/default_materials/fbx_material.sfm',
+    },
+  ],
+  model: {
+    attributes: [
+      'Position',
+      'Orientation',
+      'BoneIndices',
+      'BoneWeights',
+    ],
+    collision: {},
+    file: 'sampledata/animacion.fbx',
+    name: 'animacion',
+    recenter: 'root',
+  },
+  version: '0.54:2',
+}
