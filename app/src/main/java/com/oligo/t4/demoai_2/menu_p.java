@@ -22,6 +22,13 @@ import android.util.Log;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.io.UnsupportedEncodingException;
+import java.net.URL;
+import java.net.URLConnection;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
@@ -174,21 +181,18 @@ public class menu_p extends AppCompatActivity implements RecognitionListener{
         text = matches.get(0);
 
         if (!pruebadoble.equals(text)){
-            /*final Handler handler = new Handler();
-            String finalText = text;
-            handler.postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    addMessage(false, finalText);
-                }
-            }, 4000);*/
             addMessage(false, text);
+
             final Handler handler2 = new Handler();
             String finalText1 = text;
             handler2.postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    responseMessage(finalText1);
+                    try {
+                        responseMessage(finalText1);
+                    } catch (UnsupportedEncodingException e) {
+                        e.printStackTrace();
+                    }
                 }
             }, 5000);
             try {
@@ -297,7 +301,7 @@ public class menu_p extends AppCompatActivity implements RecognitionListener{
 
     }
 
-    private void responseMessage(String msg) {
+    private void responseMessage(String msg) throws UnsupportedEncodingException {
         final String _msg;
         int day = calendar.get(Calendar.DAY_OF_WEEK);
         _msg = msg;
@@ -763,19 +767,52 @@ public class menu_p extends AppCompatActivity implements RecognitionListener{
             startTextToSpeech(hora);
             addMessage(true, hora);
         }
-            /*
-        //-------------------------------------------------------------------------------------------
         else {
-            if (counthabla == 0)
-                addMessage(true, "No entendí la pregunta, ¿puedes repetirla por favor?");
-            else {
-                counthabla = 0;
-                String news;
-                news = "Hola " + sw;
-                addMessage(true, news);
-                talk_ToMe(news);
+            String resp = getText(sw);
+            if (!resp.equals("")) {
+                addMessage(true, resp);
+                startTextToSpeech(resp);
             }
-        }*/
+            else {
+                addMessage(true, "¿Podrias repetir tu pregunta?");
+                startTextToSpeech(resp);
+            }
+        }
+    }
+
+    public String getText(String cs) throws UnsupportedEncodingException{
+        String data = URLEncoder.encode("consulta", "UTF-8");
+
+        String text = "";
+        BufferedReader reader = null;
+
+        try{
+            URL url = new URL("/10.0.5.176");
+            URLConnection conn = url.openConnection();
+            OutputStreamWriter wr = new OutputStreamWriter(conn.getOutputStream());
+            wr.write(data);
+            wr.flush();
+
+            reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+            StringBuilder sb = new StringBuilder();
+            String line = null;
+
+            while((line = reader.readLine()) != null){
+                sb.append(line + "\n");
+            }
+            text = sb.toString();
+        }
+        catch (Exception ex){
+        }
+        finally {
+            try {
+                reader.close();
+            }
+
+            catch(Exception ex) {}
+        }
+
+        return text;
     }
 
     private void initializeTextToSpeech() {
