@@ -3,6 +3,7 @@ package com.oligo.t4.demoai_2;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.speech.RecognitionListener;
@@ -22,13 +23,17 @@ import android.util.Log;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import java.io.BufferedInputStream;
 import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
 import java.io.UnsupportedEncodingException;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.ProtocolException;
 import java.net.URL;
-import java.net.URLConnection;
-import java.net.URLEncoder;
+import java.text.Normalizer;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
@@ -66,6 +71,7 @@ public class menu_p extends AppCompatActivity implements RecognitionListener{
     final ChatAppMsgAdapter chatAppMsgAdapter = new ChatAppMsgAdapter(msgDtoList);
     RecyclerView msgRecyclerView;
     String pruebadoble = "";
+    int respuesta = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -302,7 +308,7 @@ public class menu_p extends AppCompatActivity implements RecognitionListener{
     }
 
     private void responseMessage(String msg) throws UnsupportedEncodingException {
-        final String _msg;
+        final String _msg, _msg1;
         int day = calendar.get(Calendar.DAY_OF_WEEK);
         _msg = msg;
         String sw = _msg.toLowerCase();
@@ -768,51 +774,17 @@ public class menu_p extends AppCompatActivity implements RecognitionListener{
             addMessage(true, hora);
         }
         else {
-            String resp = getText(sw);
-            if (!resp.equals("")) {
-                addMessage(true, resp);
-                startTextToSpeech(resp);
-            }
-            else {
-                addMessage(true, "¿Podrias repetir tu pregunta?");
-                startTextToSpeech(resp);
-            }
+            _msg1 = Normalizer.normalize(sw, Normalizer.Form.NFD).replaceAll("[\u0300-\u0301]", "");
+            Toast.makeText(getApplicationContext(), _msg1, Toast.LENGTH_LONG).show();
+            getText(_msg1);
         }
     }
 
-    public String getText(String cs) throws UnsupportedEncodingException{
-        String data = URLEncoder.encode("consulta", "UTF-8");
-
-        String text = "";
-        BufferedReader reader = null;
-
-        try{
-            URL url = new URL("/10.0.5.176");
-            URLConnection conn = url.openConnection();
-            OutputStreamWriter wr = new OutputStreamWriter(conn.getOutputStream());
-            wr.write(data);
-            wr.flush();
-
-            reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-            StringBuilder sb = new StringBuilder();
-            String line = null;
-
-            while((line = reader.readLine()) != null){
-                sb.append(line + "\n");
-            }
-            text = sb.toString();
-        }
-        catch (Exception ex){
-        }
-        finally {
-            try {
-                reader.close();
-            }
-
-            catch(Exception ex) {}
-        }
-
-        return text;
+    public void getText(String cs) throws UnsupportedEncodingException{
+        new ConnTask().execute("http://10.0.5.35:80/consultas_dzkmongo.php?consulta=" + cs);
+        //new ConnTask().execute("https://www.android.com/");
+        //new ConnTask().execute("http://10.0.5.35:80/android_connect/test.php");
+        //Toast.makeText(getApplicationContext(), "El resultado es : " + respuesta, Toast.LENGTH_LONG).show();
     }
 
     private void initializeTextToSpeech() {
@@ -901,5 +873,66 @@ public class menu_p extends AppCompatActivity implements RecognitionListener{
     public void onBackPressed(){
         super.onBackPressed();
         // put your code here...
+    }
+
+    /*----------------------------------------------------------------------------------------------Clases agregadas---------------------------------------------------------------------------------------------*/
+    public class ConnTask extends AsyncTask<String, String, String>{
+
+        @Override
+        protected String doInBackground(String... direc) {
+            HttpURLConnection urlConnection = null;
+ /*           try{
+                URL url = new URL(direc[0]);
+                respuesta = 1;
+                urlConnection = (HttpURLConnection) url.openConnection();
+                respuesta = 2;
+                //urlConnection.connect();
+                respuesta = urlConnection.getResponseCode();
+                InputStream in = new BufferedInputStream(urlConnection.getInputStream());
+                readStream(in);
+
+                return String.valueOf(respuesta);
+            } catch (IOException e) {
+                e.printStackTrace();
+            } finally {
+                urlConnection.disconnect();
+            }*/
+            String linea = "", resp = "";
+            StringBuilder resul = null;
+
+            try {
+                URL url = new URL(direc[0]);
+                urlConnection = (HttpURLConnection) url.openConnection();
+                respuesta = urlConnection.getResponseCode();
+
+                resul = new StringBuilder();
+
+                if (respuesta == HttpURLConnection.HTTP_OK) {
+                    InputStream in = new BufferedInputStream(urlConnection.getInputStream());
+                    BufferedReader reader = new BufferedReader(new InputStreamReader(in));
+                    while ((linea = reader.readLine()) != null) {
+                        resul.append(linea);
+                    }
+                    resp = resul.toString();
+                }
+                return resp;
+            } catch (ProtocolException e) {
+                e.printStackTrace();
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            //return null;
+            return "Algo salio mal, ¿Podrías repetir la pregunta?";
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+            //Toast.makeText(getApplicationContext(), "El resultado es : " + s, Toast.LENGTH_LONG).show();
+            addMessage(true, s);
+            startTextToSpeech(s);
+        }
     }
 }
