@@ -35,6 +35,7 @@ import java.net.ProtocolException;
 import java.net.URL;
 import java.text.Normalizer;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.List;
@@ -72,12 +73,28 @@ public class menu_p extends AppCompatActivity implements RecognitionListener{
     RecyclerView msgRecyclerView;
     String pruebadoble = "";
     int respuesta = 0;
+    ArrayList<String> months = new ArrayList<String>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         ImageView fab;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu_p);
+
+        //Para meses
+        months.add("Enero");
+        months.add("Febrero");
+        months.add("Marzo");
+        months.add("Abril");
+        months.add("Mayo");
+        months.add("Junio");
+        months.add("Julio");
+        months.add("Agosto");
+        months.add("Septiembre");
+        months.add("Octubre");
+        months.add("Noviembre");
+        months.add("Diciembre");
+
 
         // start speech recogniser
         resetSpeechRecognizer();
@@ -351,7 +368,7 @@ public class menu_p extends AppCompatActivity implements RecognitionListener{
             } catch (Exception e) {
             }
         }
-        //si porfavor
+        //si por favor
         else if ((sw.contains("si") || sw.contains("sí")) && sw.contains("por favor")) {
             addMessage(true, "Ok! Utilizo Deep learning y machine learning, para interactuar con humanos, máquinas y bases de datos, también para analizar datos obtenidos de sensores como cámaras y micrófonos para dar permiso de acceder a, por ejemplo, instalaciones, información confidencial, etcetera. También puedo recopilar datos de equipos laboratorio como Termocicladores, secuenciadores, imágenes de electroforesis, microscopía, satelitales, etcétera y complilarlos, confrontarlos con otros parámetros como condiciones climáticas, edades, geolocalización etcetera, y darte un análisis estadístico, epidemiológico, matemático o lo que requieras.");
             startTextToSpeech("Ok! Utilizo Deep learning y machine learning, para interactuar con humanos, máquinas y bases de datos, también para analizar datos obtenidos de sensores como cámaras y micrófonos para dar permiso de acceder a, por ejemplo, instalaciones, información confidencial, etcetera. También puedo recopilar datos de equipos laboratorio como Termocicladores, secuenciadores, imágenes de electroforesis, microscopía, satelitales, etcétera y complilarlos, confrontarlos con otros parámetros como condiciones climáticas, edades, geolocalización etcetera, y darte un análisis estadístico, epidemiológico, matemático o lo que requieras.");
@@ -410,19 +427,7 @@ public class menu_p extends AppCompatActivity implements RecognitionListener{
             addMessage(true, "Acceso concedido.");
             startTextToSpeech("Acceso concedido.");
         }
-/*        //Casos de dengue 2017
-        else if (sw.contains("dengue") && (sw.contains("2017")) && (!sw.contains("niños")) && (!sw.contains("ordenados")) && (!sw.contains("geográfica")) && (!sw.contains("mujeres")) && (!sw.contains("marzo")))//geográfica
-        {
-            addMessage(true, "17472 casos.");
-                    try {
-                        sleep(4000);
-                        infitiySp();
-                    } catch (Exception e) {
-                    }
-                }
-            }, 2000);
-        }
-        //ordena o ordenalos por genero
+/*      //ordena o ordenalos por genero
         else if ((sw.contains("ordenados")) || (sw.contains("ordenalos")) || (sw.contains("ordénalos")) || (sw.contains("ordena")) && (sw.contains("genero") || sw.contains("género")) && (!sw.contains("mujeres"))) {
             final Handler handler = new Handler();
             handler.postDelayed(new Runnable() {
@@ -446,22 +451,6 @@ public class menu_p extends AppCompatActivity implements RecognitionListener{
                 public void run() {
                     mediaPlayer18.start();
                     addMessage(true, "1547 casos para dengue, 567 para chukungunya y 87 casos para zika.");
-                    try {
-                        sleep(10000);
-                        infitiySp();
-                    } catch (Exception e) {
-                    }
-                }
-            }, 2000);
-        }
-        //Casos de dengue en guanajuato
-        else if (sw.contains("dengue") && (sw.contains("guanajuato")) && (!sw.contains("marzo"))) {
-            final Handler handler = new Handler();
-            handler.postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    mediaPlayer19.start();
-                    addMessage(true, "En Guanajuato se presentaron 450 casos, el 58% son mujeres y el 42% hombres");
                     try {
                         sleep(10000);
                         infitiySp();
@@ -533,8 +522,9 @@ public class menu_p extends AppCompatActivity implements RecognitionListener{
         else if ((sw.contains("en")) && (sw.contains("que") || sw.contains("qué")) && (sw.contains("mes")) && (sw.contains("estamos"))) {
             //Modificar puesto que regresa el numero del mes de 0 al 11 pero no el nombre
             int month = Calendar.getInstance().getTime().getMonth();
-            addMessage(true, String.valueOf(month));
-            startTextToSpeech(String.valueOf(month));
+            String re_m = months.get(month);
+            addMessage(true, String.valueOf(re_m));
+            startTextToSpeech(String.valueOf(re_m));
         }
         //en que ciudad estamos
         else if ((sw.contains("en")) && (sw.contains("que") || sw.contains("qué")) && (sw.contains("ciudad")) && (sw.contains("estamos"))) {
@@ -671,21 +661,11 @@ public class menu_p extends AppCompatActivity implements RecognitionListener{
             }
         }
         //en que año es
- /*       else if ((sw.contains("qué") || sw.contains("que")) && (sw.contains("año")) && (sw.contains("es"))) {
-            final Handler handler = new Handler();
-            handler.postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    mediaPlayer48.start();
-                    addMessage(true, "2019.");
-                    try {
-                        sleep(2000);
-                        infitiySp();
-                    } catch (Exception e) {
-                    }
-                }
-            }, 2000);
-        }*/
+        else if ((sw.contains("qué") || sw.contains("que")) && (sw.contains("año")) && (sw.contains("es"))) {
+            int year = Calendar.getInstance().getTime().getYear();
+            addMessage(true, String.valueOf(year));
+            startTextToSpeech(String.valueOf(year));
+        }
         //con que fin fuiste creado
         else if ((sw.contains("que") || sw.contains("qué")) && (sw.contains("con")) && (sw.contains("fin")) && (sw.contains("creado"))) {
             addMessage(true, "Administrar y brindar servicios a los usuarios del laboratorio mínimo viable.");
@@ -775,13 +755,13 @@ public class menu_p extends AppCompatActivity implements RecognitionListener{
         }
         else {
             _msg1 = Normalizer.normalize(sw, Normalizer.Form.NFD).replaceAll("[\u0300-\u0301]", "");
-            Toast.makeText(getApplicationContext(), _msg1, Toast.LENGTH_LONG).show();
+            //Toast.makeText(getApplicationContext(), _msg1, Toast.LENGTH_LONG).show();
             getText(_msg1);
         }
     }
 
     public void getText(String cs) throws UnsupportedEncodingException{
-        new ConnTask().execute("http://10.0.5.35:80/consultas_dzkmongo.php?consulta=" + cs);
+        new ConnTask().execute("http://189.187.190.76:19099/Pablo/consultas_dzkmongo.php?consulta=" + cs);
         //new ConnTask().execute("https://www.android.com/");
         //new ConnTask().execute("http://10.0.5.35:80/android_connect/test.php");
         //Toast.makeText(getApplicationContext(), "El resultado es : " + respuesta, Toast.LENGTH_LONG).show();
@@ -923,7 +903,6 @@ public class menu_p extends AppCompatActivity implements RecognitionListener{
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            //return null;
             return "Algo salio mal, ¿Podrías repetir la pregunta?";
         }
 
